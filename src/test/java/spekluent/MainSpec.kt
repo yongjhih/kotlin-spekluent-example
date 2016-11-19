@@ -4,6 +4,9 @@ import org.amshove.kluent.`should equal`
 import org.jetbrains.spek.api.Spek
 
 class MainSpec: Spek ({
-        describe("hello") {
+        describe("Coleman–Liau index") {
+                it("should be equal that result of wiki example") {
+                        Cli.compute(sentences = 5, letters = 639, words = 119) `should equal` 14.5f
+                }
         }
 })
