@@ -7,7 +7,10 @@ class Cli {
         val S = 0.296
         val C = 15.8
 
-        fun compute(letters: Int = 0, sentences: Int = 0, words: Int = 100) =
+        inline fun compute(letters: Int = 0, sentences: Int = 0, words: Int = 100) =
+            computeCoerced(letters = letters.coerceAtLeast(0), sentences = sentences.coerceAtLeast(0), words = words.coerceAtLeast(0))
+
+        fun computeCoerced(letters: Int = 0, sentences: Int = 0, words: Int = 100) =
             "%.1f".format((L * (letters * (100f / words))) - (S * (sentences * (100f / words))) - C).toFloat()
     }
 }
