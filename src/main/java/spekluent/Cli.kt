@@ -15,3 +15,28 @@ class Cli {
     }
 }
 
+// TODO
+fun String.sentences(): Array<String> {
+    // match '[\.!?]\+'
+    println(""".""".toRegex().matchEntire(this)?.groups?.size)
+    println("""[a-zA-Z]\\+""".toRegex().matchEntire(this)?.groups?.size)
+    println("""\\w""".toRegex().matchEntire(this)?.groups?.size)
+    println("""\\\w""".toRegex().matchEntire(this)?.groups?.size)
+    return """[\\.!?]\\+""".toRegex().matchEntire(this)?.groups?.map { it?.value ?: "" } ?.toTypedArray() ?: emptyArray()
+}
+
+// TODO
+fun String.words(): Array<String> {
+    // match '\w\+'
+    println("""\\w""".toRegex().matchEntire(this)?.groups?.size)
+    return """\\w\\+""".toRegex().matchEntire(this)?.groups?.map { it?.value ?: "" } ?.toTypedArray() ?: emptyArray()
+}
+
+// TODO
+fun String.letters(): Array<String> {
+    // match '\w'
+    println("""\\w""".toRegex().matchEntire(this)?.groups?.size)
+    return """\\w""".toRegex().matchEntire(this)?.groups?.map { it?.value ?: "" } ?.toTypedArray() ?: emptyArray()
+}
+
+fun String.cli() = Cli.compute(letters = this.letters().size, sentences = this.sentences().size, words = this.words().size)
